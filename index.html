@@ -19,24 +19,13 @@
   <main>
     <section id="screen-sale" class="screen active">
       <div class="hero">
-        <p class="eyebrow" id="todayLabel"></p>
-        <h1>Nuevo ticket</h1>
-        <p>Registra las jugadas y emite el boleto en segundos.</p>
-      </div>
-
-      <form id="saleForm">
-        <div class="card draw-card">
-          <label>Lotería</label>
-          <select id="lottery">
-            <option>Leidsa</option><option>Loteka</option><option>Lotería Nacional</option><option>Lotería Real</option><option>La Primera</option><option>LoteDom</option><option>La Suerte Dominicana</option>
+        <p class="eyebrow" id="toda}v��$z{-���jםion><option>Loteka</option><option>Lotería Real</option><option>Leidsa</option><option>Lotería Nacional Noche</option>
           </select>
-          <label>Modalidad / sorteo</label>
-          <select id="game"></select>
           <div class="two-col">
             <div><label>Fecha</label><input id="drawDate" type="date" required /></div>
             <div><label>Hora</label><select id="drawTime"></select></div>
           </div>
-          <p id="scheduleNote" class="microcopy"></p>
+          <div id="drawStatus" class="draw-status"><span class="status-dot"></span><div><strong id="statusTitle">Comprobando horario</strong><small id="scheduleNote"></small></div></div>
         </div>
 
         <div class="section-title"><h2>Jugadas</h2><span id="playCount">1 jugada</span></div>
@@ -46,7 +35,7 @@
         <div class="summary card">
           <span>Total a cobrar</span><strong id="saleTotal">RD$ 0.00</strong>
         </div>
-        <button class="primary" type="submit">Generar ticket <span>→</span></button>
+        <button class="primary" id="saleSubmit" type="submit">Generar ticket <span>→</span></button>
       </form>
     </section>
 
@@ -84,6 +73,13 @@
         <div><span>Moneda</span><strong>RD$</strong></div>
         <button id="exportButton">Exportar respaldo <span>↗</span></button>
         <button id="clearButton" class="danger">Borrar datos locales <span>×</span></button>
+      </div>
+      <div class="card rules-card">
+        <p class="eyebrow">LÍMITES Y PAGOS GRULODE</p><h2>Control financiero</h2>
+        <div><b>Quiniela</b><span>70× / 8× / 4×</span><small>RD$10–5,000 · Tope por número RD$30,000</small></div>
+        <div><b>Palé</b><span>1,000×</span><small>RD$10–500 · Exposición RD$5,000</small></div>
+        <div><b>Tripleta</b><span>10,000×</span><small>RD$10–100 · Exposición RD$1,000</small></div>
+        <p class="sync-note">ⓘ El control de este MVP corresponde a los tickets guardados en este dispositivo.</p>
       </div>
       <div class="about"><div class="brand-mark">Q</div><h2>Quasar Digital</h2><p>Empresa matriz de innovación tecnológica, desarrollo de software, plataformas web y móviles, automatización, inteligencia de datos y soluciones digitales escalables.</p><small>Quasar Ticket · MVP 1.0</small></div>
     </section>
