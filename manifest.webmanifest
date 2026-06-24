@@ -1,0 +1,4 @@
+{
+  "name":"Quasar Ticket","short_name":"Quasar Ticket","description":"Emisión y control local de tickets de lotería por Quasar Digital.","start_url":"./","display":"standalone","background_color":"#080d19","theme_color":"#0b1020","lang":"es","orientation":"portrait-primary",
+  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

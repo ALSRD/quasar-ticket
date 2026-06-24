@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Quasar Ticket: emisión, consulta y pago de tickets de lotería." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Quasar Ticket</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true">Q</div>
+    <div><strong>QUASAR</strong><span>TICKET</span></div>
+    <button class="icon-button" id="installButton" hidden aria-label="Instalar aplicación">⇩</button>
+  </header>
+
+  <main>
+    <section id="screen-sale" class="screen active">
+      <div class="hero">
+        <p class="eyebrow" id="todayLabel"></p>
+        <h1>Nuevo ticket</h1>
+        <p>Registra las jugadas y emite el boleto en segundos.</p>
+      </div>
+
+      <form id="saleForm">
+        <div class="card draw-card">
+          <label>Lotería</label>
+          <select id="lottery">
+            <option>Leidsa</option><option>Loteka</option><option>Lotería Nacional</option><option>Lotería Real</option><option>La Primera</option><option>LoteDom</option><option>La Suerte Dominicana</option>
+          </select>
+          <label>Modalidad / sorteo</label>
+          <select id="game"></select>
+          <div class="two-col">
+            <div><label>Fecha</label><input id="drawDate" type="date" required /></div>
+            <div><label>Hora</label><select id="drawTime"></select></div>
+          </div>
+          <p id="scheduleNote" class="microcopy"></p>
+        </div>
+
+        <div class="section-title"><h2>Jugadas</h2><span id="playCount">1 jugada</span></div>
+        <div id="plays"></div>
+        <button type="button" class="add-button" id="addPlay">＋ Agregar jugada</button>
+
+        <div class="summary card">
+          <span>Total a cobrar</span><strong id="saleTotal">RD$ 0.00</strong>
+        </div>
+        <button class="primary" type="submit">Generar ticket <span>→</span></button>
+      </form>
+    </section>
+
+    <section id="screen-tickets" class="screen">
+      <div class="screen-heading"><p class="eyebrow">CONTROL LOCAL</p><h1>Mis tickets</h1><p>Guardados únicamente en este dispositivo.</p></div>
+      <div class="search"><span>⌕</span><input id="historySearch" placeholder="Buscar número de ticket" inputmode="numeric" /></div>
+      <div class="stats">
+        <div><small>Tickets</small><strong id="ticketStat">0</strong></div>
+        <div><small>Ventas</small><strong id="salesStat">RD$ 0</strong></div>
+        <div><small>Pagados</small><strong id="paidStat">RD$ 0</strong></div>
+      </div>
+      <div id="ticketList" class="ticket-list"></div>
+    </section>
+
+    <section id="screen-check" class="screen">
+      <div class="screen-heading"><p class="eyebrow">VALIDACIÓN</p><h1>Consultar y pagar</h1><p>Escanea el QR o introduce la numeración.</p></div>
+      <div class="scanner card">
+        <div class="scan-frame"><span></span><b>▦</b></div>
+        <button id="scanButton" class="secondary" type="button">Abrir cámara</button>
+        <video id="camera" playsinline hidden></video>
+        <p id="scanMessage" class="microcopy">La cámara requiere HTTPS o localhost.</p>
+      </div>
+      <div class="divider"><span>o introducir manualmente</span></div>
+      <form id="lookupForm" class="lookup">
+        <label>Número de ticket</label>
+        <div class="input-action"><input id="ticketNumber" placeholder="Ej. 260624-0042" autocomplete="off" required /><button>Buscar</button></div>
+      </form>
+      <div id="checkResult"></div>
+    </section>
+
+    <section id="screen-more" class="screen">
+      <div class="screen-heading"><p class="eyebrow">CONFIGURACIÓN</p><h1>Más</h1></div>
+      <div class="card menu-card">
+        <div><span>Negocio</span><strong>Quasar Digital</strong></div>
+        <div><span>Moneda</span><strong>RD$</strong></div>
+        <button id="exportButton">Exportar respaldo <span>↗</span></button>
+        <button id="clearButton" class="danger">Borrar datos locales <span>×</span></button>
+      </div>
+      <div class="about"><div class="brand-mark">Q</div><h2>Quasar Digital</h2><p>Empresa matriz de innovación tecnológica, desarrollo de software, plataformas web y móviles, automatización, inteligencia de datos y soluciones digitales escalables.</p><small>Quasar Ticket · MVP 1.0</small></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegación principal">
+    <button data-screen="sale" class="active"><i>＋</i><span>Vender</span></button>
+    <button data-screen="tickets"><i>▤</i><span>Tickets</span></button>
+    <button data-screen="check"><i>▦</i><span>Consultar</span></button>
+    <button data-screen="more"><i>•••</i><span>Más</span></button>
+  </nav>
+
+  <dialog id="ticketDialog">
+    <div id="printTicket"></div>
+    <div class="dialog-actions"><button id="closeTicket" class="secondary">Cerrar</button><button id="printButton" class="primary">Imprimir / PDF</button></div>
+  </dialog>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
